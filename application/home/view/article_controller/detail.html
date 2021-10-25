@@ -1,0 +1,226 @@
+﻿<div class="breadcrumb"> 
+    <a class="crumbs" title="返回首页" href="/">返回首页</a>
+</div> 
+<div id="content"> 
+    <div id="primary" class="single-area"> 
+        <main id="main" class="site-main" role="main"> 
+            <!-- 文章内容 --> 
+            <article id="post-93" class="post-93 post type-post status-publish format-standard hentry category-web-technology tag-ssl tag-startssl tag-43"> 
+                <header class="entry-header"> 
+                    <div class="single-meta"> 
+                        <span><i class="iconfont icon-calendartext"></i>&nbsp;{{$article.create_at|date='Y-m-d H:i:s', ###}}</span> 
+                        <span><i class="iconfont icon-chartbar"></i>&nbsp;{{$article.views}}</span> 
+                        <span>
+                            <a href="javascript:;"><i class="iconfont icon-messageprocessing"></i> {{$article.comments}}
+                            </a>
+                        </span> 
+                    </div> 
+                    <div class="clear"></div> 
+                    <h1 class="entry-title">{{$article.title}}</h1> 
+                    <div class="single-tag">
+                        <i class="iconfont icon-tagmultiple"></i>&nbsp;标签：
+                        <a href="www.lampol-blog.com/tag/ssl" rel="tag">{{$article.tag}}</a>&nbsp;&nbsp;
+                    </div> 
+                    <div class="clear"></div> 
+                </header> 
+                <div class="single-content">
+                    {{$article.contents}}
+                </div> 
+                <!-- 文章点赞分享 --> 
+                <div class="clear"></div> 
+                <div id="social"> 
+                    <div class="social-main"> 
+                        <span class="post-like"> 
+                            <a href="javascript:;" data-action="ding" data-id="93" class="md_like "><i class="iconfont icon-thumbupoutline"></i>喜欢
+                                <i class="count"> 0</i> 
+                            </a> 
+                        </span> 
+                        <span class="share-sd"> 
+                            <span class="share-s">
+                                <a href="javascript:void(0)" id="share-s" title="分享">
+                                    <i class="iconfont icon-sharevariant"></i>分享
+                                </a>
+                            </span> 
+                            <div id="share"> 
+                                <ul class="bdsharebuttonbox"> 
+                                    <li><a title="分享到QQ空间" class="iconfont icon-kongjian" data-cmd="qzone"></a></li> 
+                                    <li><a title="分享到QQ好友" class="iconfont icon-qq0" data-cmd="sqq"></a></li> 
+                                    <li><a title="分享到新浪微博" class="iconfont icon-sina" data-cmd="tsina"></a></li> 
+                                    <li><a title="分享到微信" class="iconfont icon-weixin0" data-cmd="weixin"></a></li> 
+                                </ul> 
+                            </div> 
+                        </span> 
+                            <div class="clear"></div> 
+                    </div> 
+                </div> 
+            </article> 
+            <div id="copyright"> 
+                <img alt="" src="__HOME__/images/nick.jpg" class="avatar avatar-72" width="72" height="72" /> 
+                <ul class="spostinfo"> 
+                    <li><a target="_blank" rel="nofollow" href="/detail/aid/{{$article.id|encrypt=###}}">原文链接</a></li> 
+                    <li>版权声明：本站原创文章，于{{$article.create_at|date="Y-m-d",###}}，由<a href="javascript:;" rel="author">{{$article.author}}</a>发表。</li> 
+                    <li>转载请注明：<a href="javascript:;" rel="bookmark" title="本文固定链接 {{:url('/detail', ['aid'=>encrypt($article.id)], '', true)}}">{{$article.title}}</a></li> 
+                </ul> 
+            </div> 
+            <div id="related-img"> 
+                {volist name="rand_article" id="vo"}
+                <div class="r4"> 
+                    <div class="related-site"> 
+                        <figure class="related-site-img"> 
+                            <a href="/detail/aid/{{$vo.id|encrypt=###}}"><img src="/{{$vo.img_url}}" alt="{{$vo.title}}" /></a> 
+                        </figure> 
+                        <div class="related-title">
+                            <a href="/detail/aid/{{$vo.id|encrypt=###}}">{{$vo.title}}</a>
+                        </div> 
+                    </div> 
+                </div> 
+                {/volist}
+                <div class="clear"></div> 
+            </div> 
+            <!-- 上下文 --> 
+            <nav class="nav-single"> 
+                {if(is_array($pre_article))}
+                <a href="/detail/aid/{{$pre_article.id|encrypt=###}}" rel="prev">
+                    <span class="meta-nav">
+                        <span class="post-nav"><i class="iconfont icon-chevronleft"></i> 上一篇</span><br />
+                        {{$pre_article.title}}
+                    </span>
+                </a>
+                {else/}
+                <span class="meta-nav"><span class="post-nav">没有了<br /></span>已是最新文章</span> 
+                {/if}
+
+                {if(is_array($next_article))}
+                <a href="{{$next_article.id|encrypt=###}}" rel="prev">
+                    <span class="meta-nav">
+                        <span class="post-nav"><i class="iconfont icon-chevronright"></i> 下一篇</span><br />
+                        {{$next_article.title}}
+                    </span>
+                </a>
+                {else/}
+                <span class="meta-nav"><span class="post-nav">没有了<br /></span>已是最后一篇</span> 
+                {/if}
+                <div class="clear"></div> 
+            </nav> 
+            <!-- 文章评论 --> 
+            <!-- 引用 --> 
+            <div id="comments" class="comments-area"> 
+                {if (is_array($comments))}
+                <h2 class="comments-title"> {{$article.comments}} 条留言&nbsp;&nbsp;</h2> 
+                <ol class="comment-list"> 
+                    {volist name="comments" id="vo"}
+                    <li class="comment even thread-even depth-1 parent" id="comment-34"> 
+                        <div id="div-comment-34" class="comment-body"> 
+                            <div class="comment-author vcard"> 
+                                <img alt="" src="__HOME__/images/tx-2.jpg" class="avatar avatar-48" width="48" height="48" /> 
+                                <!--<cite class="fn">卡珊德拉</cite> <span class="says">:</span>--> 
+                                <strong> 匿名用户</strong> 
+                                <span class="comment-meta commentmetadata"><br />
+                                    <span class="comment-aux"> 
+                                        <span class="reply"></span> {{$key|date="Y-m-d H:i:s",###}}
+                                        <span class="floor"> &nbsp;沙发 </span> 
+                                    </span> 
+                                </span> 
+                            </div> 
+                            <p>{{$vo}}</p> 
+                        </div> 
+                        <ul class="children" style="display:none"> 
+                            <li class="comment byuser comment-author-skysmile bypostauthor odd alt depth-2" id="comment-37"> 
+                                <div id="div-comment-37" class="comment-body"> 
+                                    <div class="comment-author vcard"> 
+                                        <img alt="" src="__HOME__/images/tx-3.jpg" class="avatar avatar-48" width="48" height="48" /> 
+                                        <!--<cite class="fn">skysmile</cite> <span class="says">:</span>--> 
+                                        <strong> skysmile </strong> 
+                                        <strong><font color="#0AB59B">博主</font></strong> 
+                                        <span class="comment-meta commentmetadata">
+                                            <a href="javascript:;"></a><br />
+                                            <span class="comment-aux"> 
+                                                <span class="reply">
+                                                    <a rel="nofollow" class="comment-reply-link" href="javascript:;">
+                                                        回复
+                                                    </a>
+                                                </span> 2017年08月03日 下午6:26 
+                                                <span class="floor"> &nbsp;1层 </span> 
+                                            </span>
+                                        </span> 
+                                    </div> 
+                                    <p><span class="at">@<a href="javascript:;">卡珊德拉</a></span> 我已经不用这个了，现在的是赛门铁克的</p> 
+                                </div> 
+                            </li>
+                        </ul>
+                    </li>
+                    {/volist}
+                </ol>
+                {else/}
+                <h2 class="comments-title"> {{$article.comments}} 条留言&nbsp;&nbsp;{{$comments}}</h2> 
+                {/if}
+
+                <div id="respond" class="comment-respond"> 
+                    <h3 id="reply-title" class="comment-reply-title">给我留言
+                        <small>
+                            <a rel="nofollow" id="cancel-comment-reply-link" href="/93.html#respond" style="display:none;">取消回复</a>
+                        </small>
+                    </h3> 
+                    <form action="/comment" method="post" id="commentform"> 
+                        <input type="hidden" name="id" value="{{$article.id}}">
+                        {{:token()}}
+                        <div id="comment-author-info"> 
+                            <p class="comment-form-author">
+                                <input type="text" name="author" id="author" class="commenttext" value="" tabindex="1" /> 
+                                <label for="author">昵称（必填）</label>
+                            </p> 
+                        </div> 
+                        <div class="clear"></div> 
+                        <p class="comment-tool"> 
+                            <span class="smiley-box">
+                                评论内容
+                            </span> 
+                        </p> 
+                        <p class="comment-form-comment">
+                            <textarea id="comment" name="comments" rows="4" tabindex="4"></textarea>
+                        </p> 
+                        <p class="form-submit">
+                            <p class="comment-form-author" style="margin-left:50%;padding:10px"> 
+                                <input type="text" placeholder="验证码" name="captcha"/> 
+                                <img src="/captcha" onclick="this.src='/captcha?' + Math.random();">
+                            </p>
+                            <input id="submit" type="submit" tabindex="5" value="提&nbsp;交" /> 
+                            <input id="reset" type="reset" tabindex="6" value="重&nbsp;写" /> 
+                            <input type="hidden" name="comment_post_ID" value="93" id="comment_post_ID" />
+                            <input type="hidden" name="comment_parent" id="comment_parent" value="0" /> 
+                        </p> 
+                    </form> 
+
+                </div> 
+            </div> 
+            <!-- #comments --> 
+        </main> 
+    </div> 
+    <!-- 返回顶部 --> 
+    <ul id="scroll"> 
+        <li><a class="hidden-widget" href="javascript:hiddenwidget()" title="隐藏侧边栏"><i class="iconfont icon-windowclose"></i></a></li> 
+        <li><a class="scroll-top" title="返回顶部"><i class="iconfont icon-chevronup"></i></a></li> 
+        <li><a class="scroll-bottom" title="转到底部"><i class="iconfont icon-chevrondown"></i></a></li> 
+    </ul> 
+
+    <script>
+        $('#share-s').click(function(){
+            $('#share').toggle();
+        });
+        
+window._bd_share_config = {
+    common: {
+        bdText: "{{$article.title}}",
+        bdDesc: "{{$article.summary|preg_replace=\"/\\s+/\",\"\",###}}",
+        bdUrl: window.location.href,
+        bdPic: ""
+    },
+    share: [{
+        "bdSize": 16
+    }],
+    selectShare: [{
+        "bdSelectMiniList": ['qzone', 'tqq', 'bdxc', 'tqf']
+    }]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>

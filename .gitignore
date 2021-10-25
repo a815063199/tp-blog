@@ -1,0 +1,5 @@
+runtime/.*
+nginx/access.log
+nginx/error.log
+public/uploads
+public/ueditor/php/upload/.*

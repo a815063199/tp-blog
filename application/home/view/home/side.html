@@ -1,0 +1,89 @@
+﻿<link rel="stylesheet" type="text/css" href="__HOME__/lib/Validform_v5.3.2/css/style.css">
+<!-- 右侧开始--> 
+<div id="sidebar" class="widget-area"> 
+    <!-- 右侧搜索框开始--> 
+    <aside id="search-2" class="widget widget_search"> 
+        <div id="searchbar"> 
+            <form method="post" id="searchform" action="/search"> 
+                <input type="text" datatype="hz|zm|n" name="words" placeholder="输入搜索内容"/> 
+                <button type="submit" id="searchsubmit">搜索</button> 
+            </form> 
+        </div> 
+        <div class="clear"></div> 
+    </aside> 
+    <!-- 右侧搜索框结束--> 
+    <!-- 右侧分类开始--> 
+    <aside id="categories-2" class="widget widget_categories"> 
+        <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>分类目录</h3> 
+        <ul> 
+            {volist name="cats" id="vo"}
+            <li class="cat-item cat-item-47"><a href="/list/cid/{{$vo.id|encrypt=###}}">{{$vo.cat_name}}</a> </li> 
+            {/volist}
+        </ul> 
+        <div class="clear"></div> 
+    </aside> 
+    <!-- 右侧分类结束--> 
+
+    <!-- 近期文章开始--> 
+    <aside id="recent-posts-2" class="widget widget_recent_entries"> 
+        <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>近期文章</h3> 
+        <ul> 
+            {volist name="new_art" id="vo"}
+            <li> <a href="/detail/aid/{{$vo.id|encrypt=###}}">{{$vo.title}}</a> </li> 
+            {/volist}
+        </ul> 
+        <div class="clear"></div> 
+    </aside> 
+    <!-- 近期文章结束--> 
+    <aside id="img_cat-2" class="widget img_cat"> 
+        <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>最多评论</h3> 
+        <div class="img_cat"> 
+            <ul> 
+                {volist name="top_comment_articles" id="vo"}
+                <div class="img-box"> 
+                    <div class="img-x2"> 
+                        <figure class="insets"> 
+                            <a href="/detail/aid/{{$vo.id|encrypt=###}}">
+                                <img style="width:160px;height:100px" src="/{{$vo.img_url}}" alt="{{$vo.title}}" />
+                            </a> 
+                            <div class="img-title"> 
+                                <a href="/detail/aid/{{$vo.id|encrypt=###}}" rel="bookmark">{{$vo.title}}</a> 
+                            </div> 
+                        </figure> 
+                    </div> 
+                </div> 
+                {/volist}
+                <div class="clear"></div> 
+            </ul> 
+        </div> 
+        <div class="clear"></div> 
+    </aside> 
+
+    <!-- 人们标签开始--> 
+    <div class="sidebar-roll"> 
+        <aside id="tag_cloud-2" class="widget tag_cloud"> 
+            <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>热门标签</h3> 
+            <div class="tagcloud"> 
+                {volist name="hot_tags" id="vo"}
+                <a href="javascript:;" class="tag-cloud-link tag-link-3 tag-link-position-1" style="color:FF6633;font-size: 15px;;">{{$vo}}</a> 
+                {/volist}
+                <div class="clear"></div> 
+            </div> 
+            <div class="clear"></div> 
+        </aside> 
+    </div> 
+    <!-- 热门标签结束--> 
+</div> 
+<div class="clear"></div> 
+</div> 
+<script type="text/javascript" src="__ADMIN__/lib/Validform_v5.3.2/js/Validform_v5.3.2_min.js"></script> 
+<script>
+    $("#searchform").Validform({
+           datatype:{
+               "hz": /^[\u4e00-\u9fa5]+$/,
+               "zm": /^[a-zA-Z]+$/
+           },
+            tiptype: 3
+    });
+
+</script>
